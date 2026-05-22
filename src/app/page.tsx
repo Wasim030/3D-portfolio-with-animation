@@ -1,16 +1,25 @@
 'use client'
 
-import { SplineScene } from "@/components/ui/splite";
+import { HeroSection } from "@/components/sections/HeroSection"
+import { AboutSection } from "@/components/sections/AboutSection"
+import { SkillsSection } from "@/components/sections/SkillsSection"
+import { ProjectsSection } from "@/components/sections/ProjectsSection"
+import { ExperienceSection } from "@/components/sections/ExperienceSection"
+import { EducationSection } from "@/components/sections/EducationSection"
+import { ContactSection } from "@/components/sections/ContactSection"
+import { FooterSection } from "@/components/sections/FooterSection"
 
 export default function Home() {
   return (
-    <div className="h-screen w-screen bg-black flex items-center justify-center p-4">
-      <div className="w-full h-full max-w-[95vw] max-h-[95vh]">
-        <SplineScene 
-          scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-          className="w-full h-full"
-        />
-      </div>
-    </div>
-  );
+    <main className="min-h-screen bg-[hsl(var(--background))] overflow-x-hidden">
+      <HeroSection />
+      <AboutSection />
+      <SkillsSection />
+      <ProjectsSection />
+      <ExperienceSection />
+      <EducationSection />
+      <ContactSection />
+      <FooterSection />
+    </main>
+  )
 }
