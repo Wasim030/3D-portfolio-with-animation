@@ -10,7 +10,7 @@ const experiences = [
     company: "Ayur.Ai Private Limited",
     duration: "Jan 2026 – Present",
     location: "Chennai, India",
-    image: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=200&h=200&fit=crop", // Healthcare/tech workspace
+    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=200&h=200&fit=crop", // Healthcare/tech workspace
     details: [
       "Building end-to-end healthcare web applications integrating AI-driven wellness solutions.",
       "Developing Doctor Dashboard full-stack (frontend + backend) with responsive UI for healthcare professionals.",

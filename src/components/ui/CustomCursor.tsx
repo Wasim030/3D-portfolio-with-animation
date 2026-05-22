@@ -1,14 +1,12 @@
 'use client'
 
-import { useEffect, useState, useCallback, useRef } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { motion, useMotionValue, useSpring, AnimatePresence } from 'framer-motion'
 
 export function CustomCursor() {
   const [isVisible, setIsVisible] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
   const [isClicked, setIsClicked] = useState(false)
-  const [trail, setTrail] = useState<{ x: number; y: number; id: number }[]>([])
-  const trailId = useRef(0)
 
   const cursorX = useMotionValue(-100)
   const cursorY = useMotionValue(-100)
@@ -19,16 +17,11 @@ export function CustomCursor() {
   const followY = useSpring(cursorY, springConfig)
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
-    cursorX.set(e.clientX)
-    cursorY.set(e.clientY)
+    const x = e.clientX
+    const y = e.clientY
 
-    // Add particle to trail with unique key
-    trailId.current += 1
-    const uniqueId = Date.now() * 1000 + trailId.current
-    setTrail(prev => {
-      const next = [...prev, { x: e.clientX, y: e.clientY, id: uniqueId }]
-      return next.slice(-6) // keep last 6 particles
-    })
+    cursorX.set(x)
+    cursorY.set(y)
   }, [cursorX, cursorY])
 
   useEffect(() => {
@@ -89,32 +82,6 @@ export function CustomCursor() {
 
   return (
     <>
-      {/* ── Particle Trail ── */}
-      <AnimatePresence>
-        {trail.map((p, i) => (
-          <motion.div
-            key={p.id}
-            className="fixed top-0 left-0 pointer-events-none z-[9995]"
-            initial={{ opacity: 0.5, scale: 1 }}
-            animate={{ opacity: 0, scale: 0 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: 'easeOut' }}
-            style={{
-              left: p.x,
-              top: p.y,
-              translateX: '-50%',
-              translateY: '-50%',
-              width: 2.2 - i * 0.25,
-              height: 2.2 - i * 0.25,
-              borderRadius: '50%',
-              backgroundColor: activeColor,
-              boxShadow: `0 0 4px ${activeColor}`,
-            }}
-          />
-        ))}
-      </AnimatePresence>
-      
-
       {/* ── Core: Robot Eye Pupil ── */}
       <motion.div
         className="fixed top-0 left-0 pointer-events-none z-[9999]"

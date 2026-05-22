@@ -1,0 +1,103 @@
+WASIM AKRAM R
+Junior Full Stack Developer |Software Engineer
+Chennai, India | +91 9597925803 | wasimmsd030@gmail.com | LinkedIn | GitHub
+PROFESSIONAL SUMMARY
+Motivated Full Stack Developer with hands-on experience building and deploying web applications using React.js, Node.js, Express.js, and MongoDB. Skilled in developing REST APIs, implementing JWT-based authentication, and creating responsive user interfaces with Tailwind CSS. Passionate about developing scalable digital products and eager to contribute to collaborative engineering teams while continuously learning modern technologies.
+TECHNICAL SKILLS
+Frontend: React.js, Tailwind CSS, HTML5, CSS3, JavaScript (ES6+), React Router, API Integration, React Hooks
+Backend: Node.js, Express.js, REST APIs, JWT Authentication, bcrypt, Middleware Design
+Database: MongoDB, Firebase Firestore, CRUD Operations, Database Schema Design, SQL
+Tools: Git, GitHub, Postman, VS Code, npm, Jira, Android Studio, Figma
+Deployment: Vercel, Ngrok, Netlify, MongoDB Atlas, AWS S3
+Languages: JavaScript, TypeScript, Java, Kotlin (Jetpack Compose)
+AI-Driven Tools: ChatGPT, GitHub Copilot, Claude AI, Gemini AI, Cursor AI
+PROJECTS
+AiWell Kiosk — Smart Healthcare Kiosk Platform | Kotlin · Jetpack Compose · Node.js · MongoDB · REST APIs
+•
+Developed and maintained a smart healthcare kiosk application using Kotlin and Jetpack Compose for patient wellness tracking and digital healthcare services.
+•
+Built responsive, user-friendly kiosk interfaces using Jetpack Compose with modern Android UI architecture and reusable components.
+•
+Integrated REST APIs for patient management, wellness assessments, appointment workflows, and healthcare data synchronization.
+•
+Implemented MVVM architecture and state management for scalable and maintainable Android application development.
+•
+Connected kiosk systems with backend services for secure real-time data communication and synchronized healthcare records.
+•
+Integrated BCA machines, smart rings, and watches via BLE for real-time health and body composition data sync
+MediConnect —AI-Powered Doctor Appointment Portal|React.js · Node.js · Express.js · MongoDB · JWT · Stripe · Tailwind CSS
+•
+Developed and maintained a full-stack healthcare platform featuring appointment booking, specialty filtering, and role-based dashboards for patients, doctors, and administrators.
+•
+Implemented secure JWT + bcrypt authentication with protected routes and role-based access control for user security and session management.
+•
+Integrated Stripe payment gateway for appointment fee processing with backend validation and webhook-based confirmation handling.
+•
+Built and consumed RESTful APIs for appointment scheduling, patient management, doctor availability, and healthcare workflows.
+•
+Optimized MongoDB queries using indexing and Mongoose lean queries to improve API response times and backend performance.
+•
+Designed responsive, mobile-friendly UI components using React.js and Tailwind CSS for improved user experience across devices.
+•
+Deployed frontend on Vercel and backend on Render with environment-based configuration management and production deployment workflows.
+ShopFlow — Full Stack E-Commerce Platform | React.js · Redux Toolkit · Node.js · Express · MongoDB · Cloudinary · JWT
+•
+Built an end-to-end e-commerce platform featuring dynamic product catalog, cart management, order tracking, and admin dashboard functionality.
+•
+Designed and developed RESTful APIs with 18+ endpoints covering product management, user authentication, order workflows, and inventory handling.
+•
+Integrated Cloudinary for multi-image product uploads and optimized image delivery for improved frontend performance.
+•
+Developed secure role-based access control (RBAC) for admin and customer authorization using custom Express.js middleware.
+•
+Added JWT authentication, protected routes, and secure backend validation for user and admin operations.
+EXPERIENCE
+Ayur.Ai Private Limited — Full Stack Developer Intern Jan 2026 – Present | Chennai, India
+•
+Developed end-to-end healthcare web applications integrating AI-driven wellness solutions.
+•
+Built responsive frontend interfaces and RESTful APIs for patient management and data sync.
+•
+Worked on AI Well App backend development, including database design, RESTful APIs, and server-side logic.
+•
+Built Doctor Dashboard full-stack (frontend + backend) with responsive UI for healthcare professionals.
+•
+Completed manual and automation testing for AI Well App ensuring quality and reliability.
+•
+Developed smart healthcare kiosk app using Kotlin, Jetpack Compose, and MVVM architecture.
+•
+Integrated REST APIs and BLE for BCA machines, smart rings, and watches.
+QSpiders — Full Stack & Software Testing Course March 2025 – Dec 2025 | Chennai, India
+•
+Acquired practical knowledge in Manual Testing, Automation Testing, Core Java, and SQL.
+•
+Gained hands-on experience with Selenium WebDriver, TestNG, and bug reporting using JIRA.
+•
+Designed and executed 100+ test cases for functional modules of an e-commerce web application.
+•
+Automated key functionalities including Login, Product Search, and Checkout using Selenium WebDriver with Page Object Model (POM).
+EDUCATION
+Priyadarshini Engineering College — B.E. in Computer Science June 2021 – May 2025
+CGPA: 8.0 / 10 Vaniyambadi, Tamil Nadu
+Islamiah Boys Higher Secondary School — MPC with Computer Science June 2019 – May 2021
+Achieved top scores in multiple subjects across both Grade 10 and Grade 12 final examinations. Vaniyambadi, Tamil Nadu
+CERTIFICATIONS
+•
+React — The Complete Guide (Hooks, Router, Redux) — Simplilearn
+•
+Node.js Developer Course — Eduprep
+•
+MongoDB Basics — Simplilearn
+•
+Java programming— prodigy Infotech
+•
+Full Stack Web Development— Eduprep
+•
+Advanced QA Automation Testing — QSpiders
+LANGUAGES
+•
+English — Professional working proficiency
+•
+Tamil — Native proficiency
+•
+Hindi — Professional working proficiency

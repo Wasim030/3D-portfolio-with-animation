@@ -176,8 +176,8 @@ export function Header() {
 
           {/* Resume Button - Desktop (Icon Only) */}
           <motion.a
-            href="/resume.pdf"
-            download
+            href="/resume/Wasim_FullStack_Developer_Resume.pdf"
+            download="Wasim_Akram_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             initial={{ opacity: 0, scale: 0.9 }}
@@ -292,8 +292,8 @@ export function Header() {
 
             {/* Resume Button in Mobile Drawer - Full Width with Text */}
             <motion.a
-              href="/resume.pdf"
-              download
+              href="/resume/Wasim_FullStack_Developer_Resume.pdf"
+              download="Wasim_Akram_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setIsOpen(false)}

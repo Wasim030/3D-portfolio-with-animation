@@ -3,6 +3,11 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { CustomCursor } from "@/components/ui/CustomCursor";
+import { SmoothScroll } from "@/components/ui/SmoothScroll";
+import { WelcomeScreen } from "@/components/sections/WelcomeScreen";
+
+
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,8 +25,10 @@ export default function RootLayout({
     // Add 'dark' class to html for dark mode
     <html lang="en" className="dark">
       <body className={inter.className}>
+        <SmoothScroll />
         <CustomCursor />
-        <Header/>
+        <Header />
+        <WelcomeScreen />
         {children}
       </body>
     </html>

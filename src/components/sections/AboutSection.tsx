@@ -4,6 +4,7 @@ import { AnimatedSection } from "@/components/ui/AnimatedSection"
 import { SectionHeading } from "@/components/ui/SectionHeading"
 import { useRef } from "react"
 import { motion, useInView } from "framer-motion"
+import { SplineScene } from "@/components/ui/splite"
 
 const stats = [
   { label: 'Projects Built', value: '3+', icon: '🚀' },
@@ -109,104 +110,125 @@ export function AboutSection() {
         />
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Text Content */}
-          <AnimatedSection direction="left">
-            <div className="relative">
-              {/* Terminal header */}
-              <div className="flex items-center gap-2 px-4 py-2 bg-slate-900/80 border border-cyan-500/20 border-b-0 rounded-t-sm">
-                <div className="flex gap-1.5">
-                  <div className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/60" />
+          {/* Left Column: Bio & Stats Stacked */}
+          <div className="flex flex-col gap-6 w-full">
+            <AnimatedSection direction="left">
+              <div className="relative">
+                {/* Terminal header */}
+                <div className="flex items-center gap-2 px-4 py-2 bg-slate-900/80 border border-cyan-500/20 border-b-0 rounded-t-sm">
+                  <div className="flex gap-1.5">
+                    <div className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/60" />
+                  </div>
+                  <span className="text-[10px] font-mono text-cyan-500/50 tracking-wider">wasim@dev ~ bio.sys</span>
+                  <div className="flex-1" />
+                  <div className="flex gap-1">
+                    <div className="w-3 h-3 border border-cyan-500/30 rounded-sm" />
+                    <div className="w-3 h-3 border border-cyan-500/30 rounded-sm" />
+                  </div>
                 </div>
-                <span className="text-[10px] font-mono text-cyan-500/50 tracking-wider">wasim@dev ~ bio.sys</span>
-                <div className="flex-1" />
-                <div className="flex gap-1">
-                  <div className="w-3 h-3 border border-cyan-500/30 rounded-sm" />
-                  <div className="w-3 h-3 border border-cyan-500/30 rounded-sm" />
+
+                {/* Terminal body */}
+                <div className="border border-cyan-500/20 bg-slate-950/60 backdrop-blur-sm p-8 space-y-4 rounded-b-sm relative group hover:border-cyan-400/40 transition-all duration-300">
+                  {/* Corner accents */}
+                  <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-cyan-500/30 group-hover:border-cyan-400 transition-colors" />
+                  <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-cyan-500/30 group-hover:border-cyan-400 transition-colors" />
+                  <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-cyan-500/30 group-hover:border-cyan-400 transition-colors" />
+                  <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-cyan-500/30 group-hover:border-cyan-400 transition-colors" />
+
+                  {/* Command line 1 */}
+                  <div>
+                    <p className="text-cyan-100/80 text-sm md:text-base font-mono flex items-center gap-2">
+                      <span className="text-emerald-400 font-bold">$</span>
+                      <span>cat ./summary.txt</span>
+                      <motion.span
+                        className="inline-block w-2 h-4 bg-cyan-400"
+                        animate={{ opacity: [1, 0] }}
+                        transition={{ duration: 0.8, repeat: Infinity }}
+                      />
+                    </p>
+                  </div>
+
+                  {/* Output lines with typing animation */}
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
+                    className="space-y-3 pl-5"
+                  >
+                    <p className="text-cyan-100/70 leading-relaxed text-sm md:text-base font-mono border-l-2 border-cyan-500/30 pl-3">
+                      Motivated Full Stack Developer with hands-on experience building and deploying
+                      web applications using <span className="text-cyan-400 font-bold">React.js</span>,
+                      {' '}<span className="text-cyan-400 font-bold">Node.js</span>,
+                      {' '}<span className="text-cyan-400 font-bold">Express.js</span>, and
+                      {' '}<span className="text-cyan-400 font-bold">MongoDB</span>.
+                    </p>
+
+                    <p className="text-cyan-100/70 leading-relaxed text-sm md:text-base font-mono border-l-2 border-cyan-500/30 pl-3">
+                      Skilled in developing REST APIs, implementing JWT-based authentication, and creating
+                      responsive user interfaces with Tailwind CSS. Passionate about developing scalable
+                      digital products and eager to contribute to collaborative engineering teams while
+                      continuously learning modern technologies.
+                    </p>
+
+                    <p className="text-cyan-100/70 leading-relaxed text-sm md:text-base font-mono border-l-2 border-purple-500/30 pl-3">
+                      Currently interning at <span className="text-purple-400 font-bold">Ayur.Ai Private Limited</span> as
+                      a Full Stack Developer, building AI-driven healthcare solutions including smart kiosk applications
+                      and doctor dashboards.
+                    </p>
+                  </motion.div>
+
+                  {/* Exit code */}
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.6 }}
+                    className="pt-2"
+                  >
+                    <p className="text-xs font-mono text-cyan-500/50 flex items-center gap-2">
+                      <span className="text-emerald-400">➜</span>
+                      <span>Process completed successfully (exit code 0)</span>
+                    </p>
+                  </motion.div>
+
+                  {/* Bottom scan line effect on hover */}
+                  <motion.div
+                    className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent"
+                    initial={{ scaleX: 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                  />
                 </div>
               </div>
+            </AnimatedSection>
 
-              {/* Terminal body */}
-              <div className="border border-cyan-500/20 bg-slate-950/60 backdrop-blur-sm p-8 space-y-4 rounded-b-sm relative group hover:border-cyan-400/40 transition-all duration-300">
-                {/* Corner accents */}
-                <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-cyan-500/30 group-hover:border-cyan-400 transition-colors" />
-                <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-cyan-500/30 group-hover:border-cyan-400 transition-colors" />
-                <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-cyan-500/30 group-hover:border-cyan-400 transition-colors" />
-                <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-cyan-500/30 group-hover:border-cyan-400 transition-colors" />
+            {/* Stats Grid */}
+            <div className="grid grid-cols-2 gap-4">
+              {stats.map((stat, index) => (
+                <AnimatedCounter key={stat.label} {...stat} index={index} />
+              ))}
+            </div>
+          </div>
 
-                {/* Command line 1 */}
-                <div>
-                  <p className="text-cyan-100/80 text-sm md:text-base font-mono flex items-center gap-2">
-                    <span className="text-emerald-400 font-bold">$</span>
-                    <span>cat ./summary.txt</span>
-                    <motion.span
-                      className="inline-block w-2 h-4 bg-cyan-400"
-                      animate={{ opacity: [1, 0] }}
-                      transition={{ duration: 0.8, repeat: Infinity }}
-                    />
-                  </p>
-                </div>
-
-                {/* Output lines with typing animation */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.5, delay: 0.3 }}
-                  className="space-y-3 pl-5"
-                >
-                  <p className="text-cyan-100/70 leading-relaxed text-sm md:text-base font-mono border-l-2 border-cyan-500/30 pl-3">
-                    Motivated Full Stack Developer with hands-on experience building and deploying
-                    web applications using <span className="text-cyan-400 font-bold">React.js</span>,
-                    {' '}<span className="text-cyan-400 font-bold">Node.js</span>,
-                    {' '}<span className="text-cyan-400 font-bold">Express.js</span>, and
-                    {' '}<span className="text-cyan-400 font-bold">MongoDB</span>.
-                  </p>
-
-                  <p className="text-cyan-100/70 leading-relaxed text-sm md:text-base font-mono border-l-2 border-cyan-500/30 pl-3">
-                    Skilled in developing REST APIs, implementing JWT-based authentication, and creating
-                    responsive user interfaces with Tailwind CSS. Passionate about developing scalable
-                    digital products and eager to contribute to collaborative engineering teams while
-                    continuously learning modern technologies.
-                  </p>
-
-                  <p className="text-cyan-100/70 leading-relaxed text-sm md:text-base font-mono border-l-2 border-purple-500/30 pl-3">
-                    Currently interning at <span className="text-purple-400 font-bold">Ayur.Ai Private Limited</span> as
-                    a Full Stack Developer, building AI-driven healthcare solutions including smart kiosk applications
-                    and doctor dashboards.
-                  </p>
-                </motion.div>
-
-                {/* Exit code */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.5, delay: 0.6 }}
-                  className="pt-2"
-                >
-                  <p className="text-xs font-mono text-cyan-500/50 flex items-center gap-2">
-                    <span className="text-emerald-400">➜</span>
-                    <span>Process completed successfully (exit code 0)</span>
-                  </p>
-                </motion.div>
-
-                {/* Bottom scan line effect on hover */}
-                <motion.div
-                  className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent"
-                  initial={{ scaleX: 0 }}
-                  whileInView={{ scaleX: 1 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                />
+          {/* Right Column: 3D Spline Robot */}
+          <AnimatedSection direction="right" className="w-full h-[50vh] min-h-[350px] lg:h-[60vh] lg:max-h-[500px] relative lg:scale-105 origin-center transition-all">
+            {/* Cyber HUD Frame accents */}
+            <div className="absolute inset-0 pointer-events-none z-20 hidden lg:block">
+              <div className="absolute top-2 left-2 w-6 h-6 border-t-2 border-l-2 border-cyan-500/25" />
+              <div className="absolute top-2 right-2 w-6 h-6 border-t-2 border-r-2 border-cyan-500/25" />
+              <div className="absolute bottom-2 left-2 w-6 h-6 border-b-2 border-l-2 border-cyan-500/25" />
+              <div className="absolute bottom-2 right-2 w-6 h-6 border-b-2 border-r-2 border-cyan-500/25" />
+              <div className="absolute top-4 left-1/2 -translate-x-1/2 text-[8px] font-mono text-cyan-500/40 tracking-[0.3em] uppercase bg-slate-950/40 px-2 py-0.5 rounded-sm border border-cyan-500/10">
+                3D_ASSISTANT // SPLINE
               </div>
             </div>
-          </AnimatedSection>
 
-          {/* Stats Grid */}
-          <div className="grid grid-cols-2 gap-4">
-            {stats.map((stat, index) => (
-              <AnimatedCounter key={stat.label} {...stat} index={index} />
-            ))}
-          </div>
+            <SplineScene
+              scene="https://prod.spline.design/PyzDhpQ9E5f1E3MT/scene.splinecode"
+              className="w-full h-full relative z-10"
+            />
+          </AnimatedSection>
         </div>
       </div>
     </section>

@@ -1,9 +1,10 @@
 'use client'
 
+import { useState } from "react"
 import { SplineScene } from "@/components/ui/splite"
 import { Spotlight } from "@/components/ui/spotlight"
 import { AnimatedSection } from "@/components/ui/AnimatedSection"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 
 const socialLinks = [
   {
@@ -36,6 +37,8 @@ const socialLinks = [
 ]
 
 export function HeroSection() {
+  const [isBarHovered, setIsBarHovered] = useState(false)
+
   return (
     <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background gradient */}
@@ -72,18 +75,120 @@ export function HeroSection() {
 
       <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="white" />
 
-      {/* Left side vertical telemetry bar */}
-      <div className="hidden lg:flex absolute left-4 top-1/2 -translate-y-1/2 flex-col items-center gap-3 z-20">
-        <div className="w-[1px] h-20 bg-gradient-to-b from-transparent to-cyan-500/30" />
-        <motion.div
-          className="w-2 h-2 bg-cyan-400 rounded-full shadow-[0_0_8px_rgba(6,182,212,0.8)]"
-          animate={{ scale: [1, 1.5, 1], opacity: [1, 0.5, 1] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        />
-        <div className="text-[8px] font-mono text-cyan-500/50 tracking-widest [writing-mode:vertical-lr] rotate-180">
-          WASIM.DEV // v2.0
+      {/* ── Left telemetry bar — hover zone is ONLY the narrow visible strip ── */}
+      <div className="hidden lg:block absolute left-0 top-1/2 -translate-y-1/2 z-20">
+
+        <div
+          className="flex flex-col items-center gap-3 px-[14px] py-5"
+          onMouseEnter={() => setIsBarHovered(true)}
+          onMouseLeave={() => setIsBarHovered(false)}
+        >
+          {/* Top line — grows on hover */}
+          <motion.div
+            className="bg-gradient-to-b from-transparent to-cyan-500/40 rounded-full"
+            animate={{
+              height: isBarHovered ? 120 : 80,
+              width: isBarHovered ? 2 : 1,
+              opacity: isBarHovered ? 1 : 0.6,
+            }}
+            transition={{ type: 'spring', stiffness: 260, damping: 22 }}
+          />
+
+          {/* Center node */}
+          <div className="relative flex items-center justify-center">
+            {/* Outer rotating dashed ring */}
+            <motion.div
+              className="absolute rounded-full border border-dashed border-cyan-400/50"
+              animate={{
+                width: isBarHovered ? 44 : 0,
+                height: isBarHovered ? 44 : 0,
+                opacity: isBarHovered ? 1 : 0,
+                rotate: 360,
+              }}
+              transition={{
+                width: { type: 'spring', stiffness: 260, damping: 22 },
+                height: { type: 'spring', stiffness: 260, damping: 22 },
+                opacity: { duration: 0.2 },
+                rotate: { duration: 3.5, repeat: Infinity, ease: 'linear' },
+              }}
+            />
+            {/* Inner ring */}
+            <motion.div
+              className="absolute rounded-full border border-cyan-400/70"
+              animate={{
+                width: isBarHovered ? 26 : 0,
+                height: isBarHovered ? 26 : 0,
+                opacity: isBarHovered ? 1 : 0,
+              }}
+              transition={{ type: 'spring', stiffness: 260, damping: 22 }}
+            />
+            {/* Pulsing dot — always visible */}
+            <motion.div
+              className="w-2 h-2 rounded-full relative z-10"
+              animate={{
+                scale: [1, 1.4, 1],
+                opacity: [1, 0.5, 1],
+                backgroundColor: isBarHovered ? '#67e8f9' : '#22d3ee',
+                boxShadow: isBarHovered
+                  ? '0 0 12px 3px rgba(6,182,212,0.8)'
+                  : '0 0 8px rgba(6,182,212,0.6)',
+              }}
+              transition={{ duration: 2, repeat: Infinity }}
+            />
+          </div>
+
+          {/* Vertical label */}
+          <motion.div
+            className="text-[8px] font-mono tracking-widest [writing-mode:vertical-lr] rotate-180"
+            animate={{ color: isBarHovered ? '#67e8f9' : 'rgba(6,182,212,0.45)' }}
+            transition={{ duration: 0.25 }}
+          >
+            WASIM.DEV // v2.0
+          </motion.div>
+
+          {/* Bottom line */}
+          <motion.div
+            className="bg-gradient-to-t from-transparent to-cyan-500/40 rounded-full"
+            animate={{
+              height: isBarHovered ? 120 : 80,
+              width: isBarHovered ? 2 : 1,
+              opacity: isBarHovered ? 1 : 0.6,
+            }}
+            transition={{ type: 'spring', stiffness: 260, damping: 22 }}
+          />
         </div>
-        <div className="w-[1px] h-20 bg-gradient-to-t from-transparent to-cyan-500/30" />
+
+        {/* Slide-out — pointer-events-none so it never extends the hover zone */}
+        <AnimatePresence>
+          {isBarHovered && (
+            <motion.div
+              className="absolute left-full top-1/2 -translate-y-1/2 ml-5 flex flex-col gap-2 pointer-events-none"
+              initial={{ opacity: 0, x: -12 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -12 }}
+              transition={{ duration: 0.2 }}
+            >
+              <motion.div
+                className="flex items-center gap-2 text-[10px] font-mono text-cyan-200 bg-[rgba(6,20,35,0.92)] px-3 py-1.5 border border-cyan-500/35 rounded-sm whitespace-nowrap backdrop-blur-md shadow-[0_0_20px_rgba(6,182,212,0.15)]"
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.06 }}
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.9)] animate-pulse" />
+                SYS.STATUS: <span className="text-emerald-300 font-semibold">OPTIMAL</span>
+              </motion.div>
+              <motion.div
+                className="flex items-center gap-2 text-[10px] font-mono text-cyan-200 bg-[rgba(6,20,35,0.92)] px-3 py-1.5 border border-cyan-500/35 rounded-sm whitespace-nowrap backdrop-blur-md shadow-[0_0_20px_rgba(6,182,212,0.15)]"
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.13 }}
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_6px_rgba(6,182,212,0.9)] animate-pulse" />
+                NET.UPLINK: <span className="text-cyan-300 font-semibold">CONNECTED</span>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       <div className="relative z-10 w-full section-container">
@@ -169,7 +274,7 @@ export function HeroSection() {
                     <span className="text-emerald-400 font-bold shrink-0">$</span>
                     <span>cat ./role.txt</span>
                   </p>
-                  <p className="text-cyan-300/80 pl-5">→ Full Stack Developer & Software Engineer</p>
+                  <p className="text-cyan-300/80 pl-5">→ Junior Full Stack Developer & Software Engineer</p>
                   <p className="flex items-start gap-2 mt-1">
                     <span className="text-emerald-400 font-bold shrink-0">$</span>
                     <span>cat ./focus.txt</span>
