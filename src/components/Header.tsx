@@ -18,7 +18,8 @@ export function Header() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState('#home')
-  const [isDark, setIsDark] = useState(true)
+  const [isDark, setIsDark] = useState(false)
+
 
   // Initialize theme from localStorage or system preference
   useEffect(() => {
