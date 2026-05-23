@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useEffect, useState } from 'react'
 
-export function WelcomeScreen() {
+export function WelcomeScreen({ onComplete }: { onComplete?: () => void }) {
     const [showWelcome, setShowWelcome] = useState(true)
     const [progress, setProgress] = useState(0)
     const [currentMessage, setCurrentMessage] = useState("Initializing system...")
@@ -30,7 +30,10 @@ export function WelcomeScreen() {
                 const newProgress = prev + 1.5
                 if (newProgress >= 100) {
                     clearInterval(interval)
-                    setTimeout(() => setShowWelcome(false), 800)
+                    setTimeout(() => {
+                        setShowWelcome(false)
+                        onComplete?.()  // Call this when welcome screen is done
+                    }, 800)
                     return 100
                 }
 
@@ -59,7 +62,7 @@ export function WelcomeScreen() {
         }, 35)
 
         return () => clearInterval(interval)
-    }, [])
+    }, [onComplete])
 
     if (!mounted) return null
 
