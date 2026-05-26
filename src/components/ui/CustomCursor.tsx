@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState, useCallback } from 'react'
-import { motion, useMotionValue, useSpring, AnimatePresence } from 'framer-motion'
+import { motion, useMotionValue, AnimatePresence } from 'framer-motion'
 
 export function CustomCursor() {
   const [isVisible, setIsVisible] = useState(false)
@@ -10,11 +10,6 @@ export function CustomCursor() {
 
   const cursorX = useMotionValue(-100)
   const cursorY = useMotionValue(-100)
-
-  // Smooth trailing spring — feels like a robot servo tracking
-  const springConfig = { damping: 22, stiffness: 250, mass: 0.8 }
-  const followX = useSpring(cursorX, springConfig)
-  const followY = useSpring(cursorY, springConfig)
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
     const x = e.clientX
@@ -102,7 +97,7 @@ export function CustomCursor() {
       {/* ── Iris Ring: Contracting Camera Aperture ── */}
       <motion.div
         className="fixed top-0 left-0 pointer-events-none z-[9998]"
-        style={{ x: followX, y: followY, translateX: '-50%', translateY: '-50%' }}
+        style={{ x: cursorX, y: cursorY, translateX: '-50%', translateY: '-50%' }}
       >
         <motion.svg
           width="48"
@@ -163,7 +158,7 @@ export function CustomCursor() {
       {/* ── Hex Scanner Frame ── */}
       <motion.div
         className="fixed top-0 left-0 pointer-events-none z-[9997]"
-        style={{ x: followX, y: followY, translateX: '-50%', translateY: '-50%' }}
+        style={{ x: cursorX, y: cursorY, translateX: '-50%', translateY: '-50%' }}
       >
         <motion.svg
           width="72"
