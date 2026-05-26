@@ -7,6 +7,7 @@ import { Header } from "@/components/Header";
 import { CustomCursor } from "@/components/ui/CustomCursor";
 import { SmoothScroll } from "@/components/ui/SmoothScroll";
 import { WelcomeScreen } from "@/components/sections/WelcomeScreen";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,6 +30,7 @@ export default function RootLayout({
         ) : (
           children
         )}
+        <SpeedInsights />
       </body>
     </html>
   )
